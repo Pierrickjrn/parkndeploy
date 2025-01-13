@@ -1,40 +1,33 @@
-name: merge_workflow
+name: Merge_Request
 
 on:
     pull_request:
-    types: [opened, synchronize, reopened, closed]
+      types: [opened, synchronize, reopened, closed]
+
+
 
 jobs:
-  frontend:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build React app
-        run: npm run build
-
-      - name: Lint code
-        run: npm run lint
-
-  backend:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '7.0'
-
-      - name: Build .NET app
-        run: dotnet build -c Release
+    deploy_backend:
+      runs-on: ubuntu-latest
+      environment: production
+  
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Publish the app
+        run: dotnet publish -c Release --property:PublishDir=publish 
+        working-directory: ./backend 
+  
+  
+    deploy_frontend:
+      runs-on: ubuntu-latest
+      environment: production
+  
+      steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+  
+      - name: Build the app
+        run: npm install && npm run build && npm run lint
+        working-directory: ./frontend    
