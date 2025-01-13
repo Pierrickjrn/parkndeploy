@@ -13,4 +13,6 @@ resource swa 'Microsoft.Web/staticSites@2022-09-01' = {
   properties: {} // Even empty, it's mandatory ...
 }
 
-output swaName string = swa.name // Expose Static Web App name as we did for App Service for deployment purpose
+
+output swaName string = swa.name // Expose Static Web App name as we did for App Service for deployment purposee
+
