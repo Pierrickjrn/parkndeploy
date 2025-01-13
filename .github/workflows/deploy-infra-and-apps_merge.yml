@@ -1,7 +1,7 @@
 name: merge_workflow
 
 on:
-    merge_request:
+    pull_request:
 
 on:
   pull_request: # Se déclenche uniquement pour les Merge Requests
