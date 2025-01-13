@@ -4,7 +4,7 @@ on:
     pull_request:
 
 on:
-  pull_request: # Se déclenche uniquement pour les Merge Requests
+  pull_request: # Se déclenche uniquement pour les Merge Requestssss
 
 jobs:
   frontend:
