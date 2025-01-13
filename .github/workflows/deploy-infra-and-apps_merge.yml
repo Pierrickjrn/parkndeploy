@@ -2,9 +2,10 @@ name: merge_workflow
 
 on:
     pull_request:
+    types: [opened, synchronize, reopened, closed]
 
 on:
-  pull_request: # Se déclenche uniquement pour les Merge Requestssss
+  pull_request: # Se déclenche uniquement pour les Merge Requestssssss
 
 jobs:
   frontend:
