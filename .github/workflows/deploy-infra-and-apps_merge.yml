@@ -3,11 +3,6 @@ name: merge_workflow
 on:
     pull_request:
     types: [opened, synchronize, reopened, closed]
-  
-name: Merge Request Pipeline
-
-on:
-  pull_request: # Se déclenche uniquement pour les Merge Requests
 
 jobs:
   frontend:
